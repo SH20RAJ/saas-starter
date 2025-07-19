@@ -157,6 +157,130 @@ Expected scores with this template:
 - **SEO**: 90+ 🔍
 - **PWA**: 100 📱
 
+## Database Setup (Cloudflare D1 + Drizzle ORM)
+
+This template includes a complete database setup with Cloudflare D1 and Drizzle ORM.
+
+### 🗄️ **Database Features**
+- **Cloudflare D1**: Serverless SQLite database
+- **Drizzle ORM**: Type-safe database operations
+- **Auto-generated Types**: Full TypeScript support
+- **Migration System**: Version-controlled schema changes
+- **API Routes**: Ready-to-use CRUD endpoints
+
+### 🚀 **Quick Database Setup**
+
+1. **Install Dependencies** (already included):
+   ```bash
+   pnpm add drizzle-orm
+   pnpm add -D drizzle-kit
+   ```
+
+2. **Authenticate with Cloudflare**:
+   ```bash
+   npx wrangler login
+   ```
+
+3. **Set up Database**:
+   ```bash
+   npm run db:setup
+   ```
+   This will:
+   - Create a new D1 database
+   - Generate migration files
+   - Provide the database ID for configuration
+
+4. **Update Configuration**:
+   Update `wrangler.jsonc` with your database ID:
+   ```json
+   "d1_databases": [
+     {
+       "binding": "DB",
+       "database_name": "saas-starter-db",
+       "database_id": "your-actual-database-id"
+     }
+   ]
+   ```
+
+5. **Run Migrations**:
+   ```bash
+   npm run db:migrate
+   ```
+
+### 📊 **Database Schema**
+
+The template includes example tables:
+
+```typescript
+// Users table
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey(),
+  name: text('name').notNull(),
+  email: text('email').notNull().unique(),
+  createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text('updated_at').default(sql`CURRENT_TIMESTAMP`),
+});
+
+// Posts table
+export const posts = sqliteTable('posts', {
+  id: integer('id').primaryKey(),
+  title: text('title').notNull(),
+  content: text('content'),
+  authorId: integer('author_id').references(() => users.id),
+  published: integer('published', { mode: 'boolean' }).default(false),
+  createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: text('updated_at').default(sql`CURRENT_TIMESTAMP`),
+});
+```
+
+### 🛠️ **Available Commands**
+
+```bash
+# Database operations
+npm run db:generate    # Generate migration files
+npm run db:migrate     # Apply migrations to database
+npm run db:push        # Push schema changes directly
+npm run db:studio      # Open Drizzle Studio (database GUI)
+npm run db:setup       # Complete database setup
+
+# Development
+npm run dev           # Start development server
+npm run build         # Build for production
+npm run deploy        # Deploy to Cloudflare
+```
+
+### 🔌 **API Endpoints**
+
+The template includes ready-to-use API routes:
+
+- **GET /api/users** - Fetch all users
+- **POST /api/users** - Create a new user
+- **GET /api/posts** - Fetch all posts  
+- **POST /api/posts** - Create a new post
+
+### 📱 **Dashboard**
+
+Visit `/dashboard` to see the database in action with:
+- User management interface
+- Post management interface
+- Real-time data from D1 database
+
+### 🔧 **Database Utils**
+
+Pre-built utility functions in `src/lib/db-utils.ts`:
+
+```typescript
+// User operations
+await createUser(name, email)
+await getUserByEmail(email)
+await getAllUsers()
+
+// Post operations
+await createPost(title, content, authorId, published)
+await getPostsByAuthor(authorId)
+await getAllPosts()
+```
+
 ## Environment Variables
 
 Create a `.env.local` file with your configuration:
@@ -166,6 +290,11 @@ Create a `.env.local` file with your configuration:
 NEXT_PUBLIC_STACK_PROJECT_ID=your_project_id
 NEXT_PUBLIC_STACK_URL=https://your-stack-app.stack-auth.com
 STACK_SECRET_KEY=your_secret_key
+
+# Cloudflare Configuration (for local development)
+CLOUDFLARE_ACCOUNT_ID=your_account_id
+CLOUDFLARE_DATABASE_ID=your_database_id
+CLOUDFLARE_API_TOKEN=your_api_token
 
 # Add other environment variables as needed
 ```
