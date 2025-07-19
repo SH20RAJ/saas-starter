@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, easeInOut } from 'framer-motion';
-import { Menu, X, ArrowRight, Zap, Search } from 'lucide-react';
+import { Menu, X, ArrowRight, Zap, Search, User, LogOut } from 'lucide-react';
 import Link from 'next/link';
+import { useUser } from '@stackframe/stack';
+import { stackClientApp } from '@/stack-client';
 
 interface NavItem {
   name: string;
@@ -22,6 +24,7 @@ const navItems: NavItem[] = [
 export default function Header2() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const user = useUser();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   useEffect(() => {
@@ -157,25 +160,47 @@ export default function Header2() {
                 <Search className="h-5 w-5" />
               </motion.button>
 
-              <Link
-                href="/login"
-                className="px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
-              >
-                Sign In
-              </Link>
+              {user ? (
+                <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-2">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                      <User className="h-4 w-4" />
+                    </div>
+                    <span className="text-sm font-medium text-foreground">
+                      {user.displayName || user.primaryEmail}
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => stackClientApp.signOut()}
+                    className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <button
+                    onClick={() => stackClientApp.redirectToSignIn()}
+                    className="px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
+                  >
+                    Sign In
+                  </button>
 
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <Link
-                  href="/signup"
-                  className="inline-flex items-center space-x-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:bg-foreground/90"
-                >
-                  <span>Get Started</span>
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <button
+                      onClick={() => stackClientApp.redirectToSignUp()}
+                      className="inline-flex items-center space-x-2 rounded-lg bg-foreground px-5 py-2.5 text-sm font-medium text-background shadow-sm transition-all duration-200 hover:bg-foreground/90"
+                    >
+                      <span>Get Started</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </motion.div>
+                </>
+              )}
             </motion.div>
 
             <motion.button
@@ -230,20 +255,49 @@ export default function Header2() {
                   className="space-y-3 border-t border-border pt-6"
                   variants={mobileItemVariants}
                 >
-                  <Link
-                    href="/login"
-                    className="block w-full rounded-lg py-3 text-center font-medium text-foreground transition-colors duration-200 hover:bg-muted"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Sign In
-                  </Link>
-                  <Link
-                    href="/signup"
-                    className="block w-full rounded-lg bg-foreground py-3 text-center font-medium text-background transition-all duration-200 hover:bg-foreground/90"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Started
-                  </Link>
+                  {user ? (
+                    <>
+                      <div className="flex items-center space-x-3 px-4 py-3">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                          <User className="h-4 w-4" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground">
+                          {user.displayName || user.primaryEmail}
+                        </span>
+                      </div>
+                      <button
+                        onClick={() => {
+                          stackClientApp.signOut();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex w-full items-center justify-center gap-2 rounded-lg py-3 font-medium text-foreground transition-colors duration-200 hover:bg-muted"
+                      >
+                        <LogOut className="h-4 w-4" />
+                        Sign Out
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => {
+                          stackClientApp.redirectToSignIn();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="block w-full rounded-lg py-3 text-center font-medium text-foreground transition-colors duration-200 hover:bg-muted"
+                      >
+                        Sign In
+                      </button>
+                      <button
+                        onClick={() => {
+                          stackClientApp.redirectToSignUp();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="block w-full rounded-lg bg-foreground py-3 text-center font-medium text-background transition-all duration-200 hover:bg-foreground/90"
+                      >
+                        Get Started
+                      </button>
+                    </>
+                  )}
                 </motion.div>
               </div>
             </motion.div>
