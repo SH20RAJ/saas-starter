@@ -127,9 +127,7 @@ export default function BasicPagination({
             variants={itemVariants}
             transition={{ duration: 0.3 }}
           >
-            <PaginationPrevious
               href="#"
-              size="default"
               onClick={(e) => {
                 e.preventDefault();
                 if (currentPage > 1) {
@@ -174,9 +172,7 @@ export default function BasicPagination({
                 variants={itemVariants}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <PaginationLink
                   href="#"
-                  size="default"
                   isActive={isActive}
                   onClick={(e) => {
                     e.preventDefault();
@@ -204,9 +200,7 @@ export default function BasicPagination({
             variants={itemVariants}
             transition={{ duration: 0.3 }}
           >
-            <PaginationNext
               href="#"
-              size="default"
               onClick={(e) => {
                 e.preventDefault();
                 if (currentPage < totalPages) {
@@ -405,7 +399,6 @@ export default function BasicPagination({
                   variants={itemVariants}
                   transition={{ duration: 0.3 }}
                 >
-                  <PaginationPrevious
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
@@ -437,7 +430,6 @@ export default function BasicPagination({
                           variants={itemVariants}
                           transition={{ duration: 0.3 }}
                         >
-                          <PaginationLink
                             href="#"
                             isActive={isActive}
                             onClick={(e) => {
@@ -473,7 +465,6 @@ export default function BasicPagination({
                           variants={itemVariants}
                           transition={{ duration: 0.3 }}
                         >
-                          <PaginationLink
                             href="#"
                             isActive={isActive}
                             onClick={(e) => {
@@ -527,7 +518,6 @@ export default function BasicPagination({
                       variants={itemVariants}
                       transition={{ duration: 0.3 }}
                     >
-                      <PaginationLink
                         href="#"
                         isActive={isActive}
                         onClick={(e) => {
@@ -556,7 +546,6 @@ export default function BasicPagination({
                   variants={itemVariants}
                   transition={{ duration: 0.3 }}
                 >
-                  <PaginationNext
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
