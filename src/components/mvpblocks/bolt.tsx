@@ -6,7 +6,7 @@ import {
   MonitorIcon,
   Sparkles,
 } from 'lucide-react';
-import { Button } from '/components/ui/button';
+import { Button } from '@/components/ui/button';
 
 const EXAMPLE_ACTIONS = [
   { icon: <Figma className="h-4 w-4" />, text: 'Import from Figma' },

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
-import { cn } from '/lib/utils';
+import { cn } from '@/lib/utils';
 import {
   Pagination,
   PaginationContent,
@@ -12,7 +12,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '/components/ui/pagination';
+} from '@/components/ui/pagination';
 
 interface BasicPaginationProps {
   totalPages: number;

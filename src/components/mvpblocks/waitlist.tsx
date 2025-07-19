@@ -4,11 +4,11 @@ import type React from 'react';
 import { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Code, Star, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Particles } from '/components/ui/particles';
-import { Spotlight } from '/components/ui/spotlight';
+import { Particles } from '@/components/ui/particles';
+import { Spotlight } from '@/components/ui/spotlight';
 import { useTheme } from 'next-themes';
 import { Bricolage_Grotesque } from 'next/font/google';
-import { cn } from '/lib/utils';
+import { cn } from '@/lib/utils';
 
 const brico = Bricolage_Grotesque({
   subsets: ['latin'],

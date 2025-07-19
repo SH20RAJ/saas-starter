@@ -1,9 +1,9 @@
 'use client';
 
-import { cn } from '/lib/utils';
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { Marquee } from '/components/ui/marquee';
+import { Marquee } from '@/components/ui/marquee';
 
 export function Highlight({
   children,

@@ -1,36 +1,141 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SaaS Starter Template
 
-## Getting Started
+A complete, production-ready SaaS starter template built with modern technologies and best practices. Get your MVP up and running in minutes, not weeks.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Authentication - Complete auth system with Stack Auth
+- UI Components - 20+ pre-built MVP blocks and components
+- Performance - Optimized for speed and SEO
+- TypeScript - Full type safety throughout
+- Tailwind CSS - Modern styling with utility classes
+- Responsive - Mobile-first design approach
+- Deployment Ready - Configured for Cloudflare and Vercel
+- Developer Experience - ESLint, Prettier, and more
+
+## Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd saas-starter
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   # or
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server**
+   ```bash
+   pnpm dev
+   # or
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to see your SaaS starter in action.
+
+## Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com)
+- **Authentication**: [Stack Auth](https://stack-auth.com)
+- **UI Components**: [Radix UI](https://www.radix-ui.com) + Custom MVP Blocks
+- **Animations**: [Framer Motion](https://www.framer.com/motion)
+- **Icons**: [Lucide React](https://lucide.dev)
+- **Deployment**: [Cloudflare](https://cloudflare.com) / [Vercel](https://vercel.com)
+
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── (landing)/         # Landing page
+│   ├── handler/           # Auth handlers
+│   └── layout.tsx         # Root layout
+├── components/
+│   ├── mvpblocks/         # Pre-built SaaS components
+│   └── ui/                # Base UI components
+├── hooks/                 # Custom React hooks
+└── lib/                   # Utility functions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### MVP Blocks
+- **Heroes**: App Hero, Minimal Hero
+- **Features**: Feature showcase with icons
+- **Pricing**: Simple pricing table
+- **Testimonials**: Marquee testimonials
+- **FAQ**: Expandable FAQ section
+- **About**: Company about section
+- **Contact**: Contact forms
+- **Auth**: Login/signup forms
+- **Navigation**: Headers and footers
+- **Interactive**: 3D globe, animations
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### UI Components
+- Buttons, Cards, Dialogs
+- Forms, Inputs, Selects
+- Navigation, Breadcrumbs
+- Data display components
+- And much more...
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+All components are built to be easily customizable:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Styling**: Modify Tailwind classes or add custom CSS
+2. **Content**: Update text, images, and data in component files
+3. **Layout**: Rearrange components in the landing page
+4. **Branding**: Update colors, fonts, and logos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+### Cloudflare (Recommended)
+```bash
+pnpm run deploy
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Vercel
+```bash
+vercel deploy
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Variables
+
+Create a `.env.local` file with your configuration:
+
+```env
+# Stack Auth Configuration
+STACK_PROJECT_ID=your_project_id
+STACK_SECRET_KEY=your_secret_key
+
+# Add other environment variables as needed
+```
+
+## Contributing
+
+We welcome contributions! Please see our contributing guidelines for more details.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+- Documentation: https://github.com/SH20RAJ/saas-starter
+- Discord Community: https://discord.gg/
+- Issue Tracker: https://github.com/SH20RAJ/saas-starter/issues
+
+---
+
+Built with love for the developer community. Start building your SaaS today!
