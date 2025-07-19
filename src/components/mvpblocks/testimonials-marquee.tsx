@@ -233,7 +233,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="container relative py-10">
+    <section className="container relative py-10 mx-auto">
       {/* Decorative elements */}
       <div className="absolute -left-20 top-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
       <div className="absolute -right-20 bottom-20 z-10 h-64 w-64 rounded-full bg-blue-500/5 blur-3xl" />
