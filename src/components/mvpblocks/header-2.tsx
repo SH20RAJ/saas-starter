@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, easeInOut } from 'framer-motion';
-import { Menu, X, ArrowRight, Zap, Search, User, LogOut } from 'lucide-react';
+import { Menu, X, ArrowRight, Zap, Search } from 'lucide-react';
 import Link from 'next/link';
-import { useUser } from '@stackframe/stack';
+import { useUser, UserButton } from '@stackframe/stack';
 import { stackClientApp } from '@/stack-client';
 
 interface NavItem {
@@ -162,21 +162,7 @@ export default function Header2() {
 
               {user ? (
                 <div className="flex items-center space-x-3">
-                  <div className="flex items-center space-x-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                      <User className="h-4 w-4" />
-                    </div>
-                    <span className="text-sm font-medium text-foreground">
-                      {user.displayName || user.primaryEmail}
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => stackClientApp.signOut()}
-                    className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-foreground/80 transition-colors duration-200 hover:text-foreground"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    Sign Out
-                  </button>
+                  <UserButton />
                 </div>
               ) : (
                 <>
@@ -256,26 +242,9 @@ export default function Header2() {
                   variants={mobileItemVariants}
                 >
                   {user ? (
-                    <>
-                      <div className="flex items-center space-x-3 px-4 py-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                          <User className="h-4 w-4" />
-                        </div>
-                        <span className="text-sm font-medium text-foreground">
-                          {user.displayName || user.primaryEmail}
-                        </span>
-                      </div>
-                      <button
-                        onClick={() => {
-                          stackClientApp.signOut();
-                          setIsMobileMenuOpen(false);
-                        }}
-                        className="flex w-full items-center justify-center gap-2 rounded-lg py-3 font-medium text-foreground transition-colors duration-200 hover:bg-muted"
-                      >
-                        <LogOut className="h-4 w-4" />
-                        Sign Out
-                      </button>
-                    </>
+                    <div className="flex w-full justify-center py-3">
+                      <UserButton />
+                    </div>
                   ) : (
                     <>
                       <button

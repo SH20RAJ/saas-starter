@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
-import withPWA from 'next-pwa';
+
+// @ts-ignore - next-pwa doesn't have proper TypeScript definitions
+const withPWA = require('next-pwa');
 
 const nextConfig: NextConfig = {
   images: {

@@ -129,6 +129,7 @@ export default function BasicPagination({
           >
             <PaginationPrevious
               href="#"
+              size="default"
               onClick={(e) => {
                 e.preventDefault();
                 if (currentPage > 1) {
@@ -175,6 +176,7 @@ export default function BasicPagination({
               >
                 <PaginationLink
                   href="#"
+                  size="default"
                   isActive={isActive}
                   onClick={(e) => {
                     e.preventDefault();
@@ -204,6 +206,7 @@ export default function BasicPagination({
           >
             <PaginationNext
               href="#"
+              size="default"
               onClick={(e) => {
                 e.preventDefault();
                 if (currentPage < totalPages) {
