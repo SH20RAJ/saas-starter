@@ -7,6 +7,7 @@ import TestimonialsMarquee from "@/components/mvpblocks/testimonials-marquee";
 import SimplePricing from "@/components/mvpblocks/simple-pricing";
 import Faq3 from "@/components/mvpblocks/faq-3";
 import FooterNewsletter from "@/components/mvpblocks/footer-newsletter";
+import { Features } from "@/components/accertinity/features";
 
 export const metadata: Metadata = {
   title: "SaaS Starter Template - Build Your MVP Fast",
@@ -37,6 +38,7 @@ export default function Home() {
       <AppHero />
       <Feature1 />
       {/* <AboutUs1 /> */}
+      <Features />
       <TestimonialsMarquee />
       <SimplePricing />
       <Faq3 />
